@@ -1,28 +1,8 @@
-<article class="post">
-<div class="title">
-  <a href="{{post_url}}" target="_blank">{{title}}</a>
-  <span>({{format_url post_url}})</span>
-</div>
-<div class="meta">
-  {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
-  |
-  <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-</div>
-</article>
+<!-- displaying articles -->
+{{> post-info post}}
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
-  </div>
-</form>
-
-{{> comments post.comments}}
-
+<!-- displaying form and comments-->
+<!-- only display if logged in -->
 {{#if loggedIn}}
 <form class="comment-form">
   <div>
@@ -35,6 +15,8 @@
   </div>
 </form>
 {{/if}}
+
+{{> comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>

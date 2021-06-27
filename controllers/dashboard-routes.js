@@ -77,17 +77,16 @@ router.get('/', withAuth, (req, res) => {
   
         // serialize the data
         const post = dbPostData.get({ plain: true });
-  
-        // pass data to template
+
         res.render('edit-post', {
-          post,
-          loggedIn: req.session.loggedIn
-        });
+            post,
+            loggedIn: true
+            });
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
-  });
+});
 
 module.exports = router;

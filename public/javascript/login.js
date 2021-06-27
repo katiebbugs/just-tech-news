@@ -23,11 +23,9 @@ async function signupFormHandler(event) {
         alert(response.statusText);
       }
     }
-}
-  
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+  }
 
-async function loginFormHandler(event) {
+  async function loginFormHandler(event) {
     event.preventDefault();
   
     const email = document.querySelector('#email-login').value.trim();
@@ -44,11 +42,12 @@ async function loginFormHandler(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
       } else {
         alert(response.statusText);
       }
     }
   }
   
+  document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
   document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
